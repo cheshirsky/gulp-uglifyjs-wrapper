@@ -36,7 +36,9 @@ module.exports = function (options) {
             if (!options.outSourceMap) return cb();
             var mapsFile = new gutil.File({
                 contents: new Buffer(minified.map),
-                path:  typeof options.outSourceMap === 'string' ? options.outSourceMap : path.basename(file.path) + mapPrefix
+                path:  typeof options.outSourceMap === 'string'
+                    ? options.outSourceMap
+                    : path.basename(file.path) + mapPrefix
             });
             this.push(mapsFile);
         } catch (err) {
